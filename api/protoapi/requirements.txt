@@ -1,0 +1,24 @@
+# Requirements specifically for the example app
+Django>=1.11
+django-debug-toolbar
+django-polymorphic>=2.0
+djangorestframework
+inflection
+pluggy
+py
+pyparsing
+pytz
+sqlparse
+django-filter>=2.0
+django-factory-generator
+django-rest-swagger
+mysqlclient
+drf-generators
+django-rest-auth
+drf-generators
+django_basic_crud_generator
+django-cors-headers 
+mysqlclient
+factory_generator
+django-factory-generator
+djangorestframework
