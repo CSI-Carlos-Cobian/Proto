@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author OBELISK
+ *
+ */
+module Proto {
+}
