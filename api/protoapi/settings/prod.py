@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     "factory_generator",
     "polymorphic",
     "protoapi",
-
 ]
 
 TEMPLATES = [

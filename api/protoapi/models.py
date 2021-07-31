@@ -17,23 +17,23 @@ class Type(models.Model):
     idtype = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=45)
 
-    def getTypeName(idType):
+    def getTypeName(idBytes):
         type = {
             b'\x00': "Debit",
             b'\x01': "Credit",
             b'\x02': "StartAutopay",
             b'\x03': "EndAutopay"
         }
-        return type.get(idType, "Invalid State")
+        return type.get(idBytes, "Invalid State")
 
-    def hasField(idType):
+    def hasField(idBytes):
         type = {
             b'\x00': True,
             b'\x01': True,
             b'\x02': False,
             b'\x03': False
         }
-        return type.get(idType, "Invalid State")
+        return type.get(idBytes, "Invalid State")
     class Meta:
         managed = False
         db_table = 'type'

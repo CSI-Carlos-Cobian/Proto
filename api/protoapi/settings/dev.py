@@ -2,7 +2,6 @@ import os,datetime
 
 SITE_ID = 1
 DEBUG = True
-# DEBUG = False
 
 MEDIA_ROOT = os.path.normcase(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL = "/media/"
@@ -65,6 +64,7 @@ INSTALLED_APPS = [
     "factory_generator",
     "polymorphic",
     "protoapi",
+    
 ]
 
 TEMPLATES = [

@@ -26,7 +26,7 @@ urlpatterns = [
     path('protoapi/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('protoapi/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
     path('protoapi/token/verify', TokenVerifyView.as_view(), name='token_verify'),
-    # url(r'^admin/', admin.site.urls),
+    url(r'^protoapi/admin/', admin.site.urls),
 
 
     path(

@@ -8,8 +8,8 @@ from django.db.models import Sum
 from api.protoapi.settings.dev import DATABASES
 settings.configure(DATABASES=DATABASES, INSTALLED_APPS=["api.protoapi",])
 django.setup()
-
 from api.protoapi.models import Record,Type,User
+
 
 # ---- Global variables ----
 path = os.path.dirname(os.path.abspath(__file__))
@@ -112,8 +112,7 @@ if credit is None: credit = 0.0
 print(f"balance for user {thisUser}={float(credit)-float(debit)}")
 
 
-
-# JSON REST Endpoint 
+# # JSON REST Endpoint 
 # import argparse
 # import urllib.request
 # import json
@@ -123,3 +122,5 @@ print(f"balance for user {thisUser}={float(credit)-float(debit)}")
 # url = f"{host}/protoapi/record?filter[timestamp]={r.timestamp}&filter[user_iduser]={r.user_iduser.iduser}"
 # req = urllib.request.Request(url, headers=headers)
 # data = json.loads(urllib.request.urlopen(req).read())
+# for d in data['data']:
+#     print(f": {str()}")

@@ -66,7 +66,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 -- -----------------------------------------------------
--- Default User manually inserted.
+-- Default GODMODE #TODO User manually inserted.
 -- -----------------------------------------------------
 show tables;
 CREATE USER 'protoapi'@'%' IDENTIFIED BY '4dHocHomeworkPr0t0' ; 
