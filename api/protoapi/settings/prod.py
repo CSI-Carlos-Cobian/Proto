@@ -38,20 +38,18 @@ hiddenimports=[ "django.contrib.admin.apps",
                 "django.contrib.auth.context_processors", 
                 "django.contrib.messages.context_processors"]
 
-DATABASE_ENGINE = "mysql"
+DATABASE_ENGINE = "sqlite3"
 
+# Broken
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql", 
-        "NAME": "protoapi_db",
-        "USER": "protoapi",
-        "PASSWORD": "4dHocHomeworkPr0t0",
-        "HOST": "127.0.0.1",   # Or an IP Address that your DB is hosted on
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": ":memory:",
     }
 }
 
 INSTALLED_APPS = [
+    "django_extensions",
     "django.contrib.sites",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -69,6 +67,7 @@ INSTALLED_APPS = [
     "factory_generator",
     "polymorphic",
     "protoapi",
+
 ]
 
 TEMPLATES = [
@@ -99,7 +98,7 @@ STATIC_URL = "/static/"
 
 ROOT_URLCONF = "protoapi.urls"
 
-SECRET_KEY = "SargentoSalchichon420"
+SECRET_KEY = "4dHocHomeworkPr0t0"
 
 PASSWORD_HASHERS = ("django.contrib.auth.hashers.UnsaltedMD5PasswordHasher",)
 
@@ -217,3 +216,7 @@ SWAGGER_SETTINGS = {
 #     "is_authenticated": True,  # Set to True to enforce user authentication,
 #     "is_superuser": False,  # Set to True to enforce admin only access
 # }
+
+
+# from django.core.management import execute_from_command_line
+# execute_from_command_line(['./manage.py', 'migrate'])

@@ -1,7 +1,8 @@
 import os,datetime
 
 SITE_ID = 1
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 MEDIA_ROOT = os.path.normcase(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL = "/media/"
@@ -9,17 +10,17 @@ MEDIA_URL = "/media/"
 LOGIN_URL = 'rest_framework:login'
 LOGOUT_URL = 'rest_framework:logout'
 
-# CORS_ORIGIN_ALLOW_ALL = False
-# CORS_ORIGIN_WHITELIST = (
-#     "https://localhost:8000",
-#     "https://127.0.0.1:8000",
-#     "https://localhost:4200",
-#     "https://localhost:80",
-#     "http://localhost:8000",
-#     "http://127.0.0.1:8000",
-#     "http://localhost:4200",
-#     "http://localhost:80",
-# )
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    "https://localhost:8000",
+    "https://127.0.0.1:8000",
+    "https://localhost:4200",
+    "https://localhost:80",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost:4200",
+    "http://localhost:80",
+)
 
 ALLOWED_HOSTS = [   "localhost",
                     "127.0.0.1", ]
@@ -52,6 +53,7 @@ DATABASES = {
 }
 
 INSTALLED_APPS = [
+    "django_extensions",
     "django.contrib.sites",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -99,7 +101,7 @@ STATIC_URL = "/static/"
 
 ROOT_URLCONF = "protoapi.urls"
 
-SECRET_KEY = "SargentoSalchichon420"
+SECRET_KEY = "4dHocHomeworkPr0t0"
 
 PASSWORD_HASHERS = ("django.contrib.auth.hashers.UnsaltedMD5PasswordHasher",)
 

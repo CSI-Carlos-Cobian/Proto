@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.urls import path
 from django.views.generic import TemplateView
 
+from django.contrib import admin
 from rest_framework import routers,views
 from rest_framework.schemas import get_schema_view
 from rest_framework_json_api.schemas.openapi import SchemaGenerator
@@ -17,9 +18,9 @@ from rest_framework_simplejwt.views import (
 from protoapi import views
 
 router = routers.SimpleRouter(trailing_slash=False)
-router.register(r'Record', views.RecordViewSet)
-router.register(r'Type', views.TypeViewSet)
-router.register(r'User', views.UserViewSet)
+router.register(r'record', views.RecordViewSet)
+router.register(r'type', views.TypeViewSet)
+router.register(r'user', views.UserViewSet)
 
 app_name='protoapi'
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path('protoapi/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('protoapi/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
     path('protoapi/token/verify', TokenVerifyView.as_view(), name='token_verify'),
+    # url(r'^admin/', admin.site.urls),
 
 
     path(
