@@ -1,4 +1,4 @@
-from .dev import *  # noqa
+from .dev import *  
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql", 

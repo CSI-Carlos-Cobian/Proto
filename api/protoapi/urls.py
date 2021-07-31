@@ -1,19 +1,16 @@
 from django.conf.urls import include, url
 from django.urls import path
 from django.views.generic import TemplateView
-
 from django.contrib import admin
 from rest_framework import routers,views
 from rest_framework.schemas import get_schema_view
 from rest_framework_json_api.schemas.openapi import SchemaGenerator
 from rest_framework.authtoken.views import obtain_auth_token  
-
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
     TokenVerifyView,
 )
-
 
 from protoapi import views
 
@@ -35,9 +32,9 @@ urlpatterns = [
     path(
         "openapi",
         get_schema_view(
-            title="Example API",
-            description="API for all things …",
-            version="1.0.0",
+            title="Proto API",
+            description="API to parse bytes into relational models",
+            version="0.1.0",
             generator_class=SchemaGenerator,
         ),
         name="openapi-schema",

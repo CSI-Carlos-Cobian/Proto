@@ -10,34 +10,28 @@ MEDIA_URL = "/media/"
 LOGIN_URL = 'rest_framework:login'
 LOGOUT_URL = 'rest_framework:logout'
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    "https://localhost:8000",
-    "https://127.0.0.1:8000",
-    "https://localhost:4200",
-    "https://localhost:80",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "http://localhost:4200",
-    "http://localhost:80",
-)
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     "https://localhost:8000",
+#     "https://127.0.0.1:8000",
+# )
 
 ALLOWED_HOSTS = [   "localhost",
                     "127.0.0.1", ]
 
 
-hiddenimports=[ "django.contrib.admin.apps", 
-                "django.contrib.auth.apps", 
-                "django.contrib.contenttypes.apps", 
-                "django.contrib.sessions.apps", 
-                "django.contrib.messages.apps", 
-                "django.contrib.staticfiles.apps", 
-                "django.contrib.messages.middleware", 
-                "django.contrib.sessions.middleware", 
-                "django.contrib.sessions.serializers", 
-                "django.template.loaders", 
-                "django.contrib.auth.context_processors", 
-                "django.contrib.messages.context_processors"]
+# hiddenimports=[ "django.contrib.admin.apps", 
+#                 "django.contrib.auth.apps", 
+#                 "django.contrib.contenttypes.apps", 
+#                 "django.contrib.sessions.apps", 
+#                 "django.contrib.messages.apps", 
+#                 "django.contrib.staticfiles.apps", 
+#                 "django.contrib.messages.middleware", 
+#                 "django.contrib.sessions.middleware", 
+#                 "django.contrib.sessions.serializers", 
+#                 "django.template.loaders", 
+#                 "django.contrib.auth.context_processors", 
+#                 "django.contrib.messages.context_processors"]
 
 DATABASE_ENGINE = "mysql"
 
@@ -172,15 +166,12 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
-
     "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
     "TOKEN_TYPE_CLAIM": "token_type",
-
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": datetime.timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": datetime.timedelta(days=1),
 }
-
 
 
 SWAGGER_SETTINGS = {
@@ -202,20 +193,3 @@ SWAGGER_SETTINGS = {
         "patch"
     ],
 }
-
-
-# SWAGGER_SETTINGS = {
-#     "exclude_namespaces": [], # List URL namespaces to ignore
-#     "api_version": '0.1',  # Specify your API's version
-#     "api_path": "/",  # Specify the path to your API not a root level
-#     "enabled_methods": [  # Specify which methods to enable in Swagger UI
-#         'get',
-#         'post',
-#         'put',
-#         'patch',
-#         'delete'
-#     ],
-#     "api_key": '', # An API key
-#     "is_authenticated": True,  # Set to True to enforce user authentication,
-#     "is_superuser": False,  # Set to True to enforce admin only access
-# }
