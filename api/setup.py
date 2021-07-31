@@ -75,15 +75,13 @@ if sys.argv[-1] == "publish":
     # description="",
     # long_description=read(""),
     # author_email="",
-    # packages=get_packages("rest_framework_json_api"),
-    # package_data=get_package_data("rest_framework_json_api"),
+    # packages=get_packages(""),
+    # package_data=get_package_data(""),
 setup(
-
-
     classifiers=[
-        "Environment :: Web Environment",
+        "Environment :: Back End Web Environment",
         "Framework :: Django",
-        "Intended Audience :: Developers",
+        "Intended Audience :: AdHoc",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
@@ -93,7 +91,6 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Software Development :: Libraries :: Application Frameworks",
-        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     install_requires=[
         "inflection>=0.3.0",
