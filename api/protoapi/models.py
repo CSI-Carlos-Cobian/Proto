@@ -15,7 +15,7 @@ class Record(models.Model):
     type_idtype = models.ForeignKey('Type', models.DO_NOTHING, db_column='type_idtype')
     timestamp = models.PositiveBigIntegerField()
     user_iduser = models.ForeignKey('User', models.DO_NOTHING, db_column='user_iduser')
-    ammount = models.FloatField(blank=True)
+    ammount = models.FloatField(blank=True, null=True)
 
     # def __init__(self, idrecord:int, type_idtype, timestamp, user_iduser, ammount:float, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
@@ -29,7 +29,7 @@ class Record(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Record'
+        db_table = 'record'
 
 
 class Type(models.Model):
@@ -62,7 +62,7 @@ class Type(models.Model):
         return type.get(idType, "Invalid State")
     class Meta:
         managed = False
-        db_table = 'Type'
+        db_table = 'type'
 
 
 class User(models.Model):
@@ -76,4 +76,4 @@ class User(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'User'
+        db_table = 'user'

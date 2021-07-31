@@ -4,13 +4,13 @@ from protoapi.models import Record,Type,User
 from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 # My Serializers
-class TypeSerializer(ModelSerializer):
+class TypeSerializer(WritableNestedModelSerializer,ModelSerializer):
     class Meta:
         model = Type
         depth = 4
         fields = '__all__'
 
-class UserSerializer(ModelSerializer):
+class UserSerializer(WritableNestedModelSerializer,ModelSerializer):
     class Meta:
         model = User
         depth = 4

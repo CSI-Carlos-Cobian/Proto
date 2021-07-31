@@ -1,9 +1,6 @@
 import os
 import inquirer
-import argparse
 import struct
-import urllib.request
-import json
 import django 
 from django.conf import settings
 from django.db.models import Sum
@@ -16,9 +13,6 @@ from api.protoapi.models import Record,Type,User
 
 # ---- Global variables ----
 path = os.path.dirname(os.path.abspath(__file__))
-headers = { 'accept' : 'application/vnd.api+json',
-            'Content-Type' : 'application/vnd.api+json' }#TODO: Include AuthBearer header when IsAuthenticated is active.
-host    = "http://localhost:8000"
 
 # ---- Files ----
 filesList = []
@@ -35,7 +29,8 @@ questions = [
             ]
 answers = inquirer.prompt(questions)
 
-recordList:Record = []
+# ---- File iterator ----
+# recordList:Record = [] #Remains unused and may be removed.
 for answer in answers['file']:
     print(f"Selected File: {answer}")
     try:
@@ -50,7 +45,7 @@ for answer in answers['file']:
         records = int.from_bytes(file.read(4), byteorder='big', signed=False) 
         print(f"Header defined Length: {records}") 
 
-        #-- Record--
+        # ---- Record iterator ----
         for i in list(range(records)):
             typeByte = file.read(1)
             type        = int.from_bytes(  
@@ -75,19 +70,18 @@ for answer in answers['file']:
                             user_iduser = User(iduser=user_iduser),
                             ammount     = ammount
                         ) 
-            recordList.append(r)
+            # recordList.append(r)
             print(f"Record {i}/{records}: {r.type_idtype.name:14} | {r.timestamp:12} | {r.user_iduser.iduser:22} | {r.ammount}")
 
             r.user_iduser.save()
             r.type_idtype.save()#TODO: Implement default inserts on django migration.
 
-            # Validate existing record and test JSON REST Endpoint 
-            url = f"{host}/protoapi/record?filter[timestamp]={r.timestamp}&filter[user_iduser]={r.user_iduser.iduser}"
-            req = urllib.request.Request(url, headers=headers)
-            data = json.loads(urllib.request.urlopen(req).read())
-            
-            if(len(data['data']) != 0):
-                print(f"Record {i}: exists in db {len(data['data'])} times")
+            # ---- Duplicate Validation ----
+            count = Record.objects.filter(  timestamp=r.timestamp, 
+                                            user_iduser=r.user_iduser.iduser
+                                            ).count()
+            if(count != 0):
+                print(f"Record {i}: exists in db {count} times")
             else:
                 r.save()
 
@@ -104,17 +98,28 @@ print(f"total debit amount={Record.objects.filter(type_idtype=0).aggregate(Sum('
 print(f"autopays started={Record.objects.filter(type_idtype=2).count()}")
 print(f"autopays ended={Record.objects.filter(type_idtype=3).count()}")
 
-
 thisUser = 2456938384156277127
-debit =   Record.objects.filter(    user_iduser=thisUser, 
-                                    type_idtype=0
+debit = Record.objects.filter(  user_iduser=thisUser, 
+                                type_idtype=0
                                 ).aggregate(Sum('ammount'))['ammount__sum']
 if debit is None: debit = 0.0
 
-credit = Record.objects.filter(     user_iduser=thisUser, 
-                                    type_idtype=1
+credit = Record.objects.filter( user_iduser=thisUser, 
+                                type_idtype=1
                                 ).aggregate(Sum('ammount'))['ammount__sum']
 if credit is None: credit = 0.0
 
-
 print(f"balance for user {thisUser}={float(credit)-float(debit)}")
+
+
+
+# JSON REST Endpoint 
+# import argparse
+# import urllib.request
+# import json
+# headers = { 'accept' : 'application/vnd.api+json',
+#             'Content-Type' : 'application/vnd.api+json' }#TODO: Include AuthBearer header when IsAuthenticated is active.
+# host    = "http://localhost:8000"
+# url = f"{host}/protoapi/record?filter[timestamp]={r.timestamp}&filter[user_iduser]={r.user_iduser.iduser}"
+# req = urllib.request.Request(url, headers=headers)
+# data = json.loads(urllib.request.urlopen(req).read())
