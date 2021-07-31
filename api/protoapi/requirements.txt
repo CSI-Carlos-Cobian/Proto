@@ -15,12 +15,12 @@ django-rest-swagger
 mysqlclient
 drf-generators
 django-rest-auth
-drf-generators
 django_basic_crud_generator
 django-cors-headers 
 mysqlclient
-factory_generator
-django-factory-generator
 djangorestframework
 django-extensions
 inquirer
+djangorestframework-jsonapi
+djangorestframework-simplejwt
+drf-writable-nested
