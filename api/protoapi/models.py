@@ -1,18 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 
-class Record(models.Model):
-    idrecord = models.AutoField(primary_key=True)
-    type_idtype = models.ForeignKey('Type', models.DO_NOTHING, db_column='type_idtype')
-    timestamp = models.PositiveBigIntegerField()
-    user_iduser = models.ForeignKey('User', models.DO_NOTHING, db_column='user_iduser')
-    ammount = models.FloatField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'record'
-
-
 class Type(models.Model):
     idtype = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=45)
@@ -45,3 +33,14 @@ class User(models.Model):
     class Meta:
         managed = False
         db_table = 'user'
+
+class Record(models.Model):
+    idrecord = models.AutoField(primary_key=True)
+    type_idtype = models.ForeignKey(Type, models.DO_NOTHING, db_column='type_idtype')
+    timestamp = models.PositiveBigIntegerField()
+    user_iduser = models.ForeignKey(User, models.DO_NOTHING, db_column='user_iduser')
+    ammount = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'record'

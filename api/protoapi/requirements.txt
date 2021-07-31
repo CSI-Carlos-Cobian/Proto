@@ -23,3 +23,4 @@ factory_generator
 django-factory-generator
 djangorestframework
 django-extensions
+inquirer

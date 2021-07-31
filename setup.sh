@@ -1,14 +1,13 @@
 #!/bin/bash
-# sudo apt-get install
-
+# Setup
+# sudo apt-get update 
+# sudo apt-get upgrade -y
+# sudo git -y
+# sudo git clone https://github.com/carloscobian96/Proto.git --branch Python
 
 sudo apt-get update 
 sudo apt-get upgrade -y
 sudo apt-get install python-dev default-libmysqlclient-dev python3-pip python-pip git -y
-sudo pip3 install inquirer
-# sudo git clone https://github.com/carloscobian96/Proto.git --branch Python
-
-# https://pypi.org/project/drf-aggregates/
 
 sudo apt install mysql-server -y
 #TODO: Secure Configuration disabled. 
@@ -17,8 +16,6 @@ sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'protoapi'@'%';"
 sudo mysql -e "GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'protoapi'@'%' WITH GRANT OPTION;"
 sudo mysql -e "FLUSH PRIVILEGES;"
 sudo mysql -e "CREATE SCHEMA protoapi_db"
-
-
 
 
 cd Proto/api

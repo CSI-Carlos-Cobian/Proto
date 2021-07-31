@@ -70,7 +70,7 @@ for answer in answers['file']:
                             user_iduser = User(iduser=user_iduser),
                             ammount     = ammount
                         ) 
-            # recordList.append(r)
+            # recordList.append(r) 
             print(f"Record {i}/{records}: {r.type_idtype.name:14} | {r.timestamp:12} | {r.user_iduser.iduser:22} | {r.ammount}")
 
             r.user_iduser.save()
@@ -122,5 +122,7 @@ print(f"balance for user {thisUser}={float(credit)-float(debit)}")
 # url = f"{host}/protoapi/record?filter[timestamp]={r.timestamp}&filter[user_iduser]={r.user_iduser.iduser}"
 # req = urllib.request.Request(url, headers=headers)
 # data = json.loads(urllib.request.urlopen(req).read())
-# for d in data['data']:
+# for d in data['data']: 
+#     r:Record = Record(**d['attributes'])
+#     r.user_iduser = User(**d['attributes']['attributes'])
 #     print(f": {str()}")
