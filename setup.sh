@@ -1,10 +1,12 @@
 #!/bin/bash
+# sudo apt-get install
+
+
 sudo apt-get update 
 sudo apt-get upgrade -y
-sudo apt-get install python-dev default-libmysqlclient-dev python3-pip python-pip -y
+sudo apt-get install python-dev default-libmysqlclient-dev python3-pip python-pip git -y
 sudo pip3 install inquirer
-# django-extensions
-# rest_framework_swagger
+# sudo git clone https://github.com/carloscobian96/Proto.git --branch Python
 
 # https://pypi.org/project/drf-aggregates/
 
@@ -17,7 +19,7 @@ sudo mysql -e "FLUSH PRIVILEGES;"
 sudo mysql -e "CREATE SCHEMA protoapi_db"
 
 
-# sudo git clone https://github.com/carloscobian96/Proto.git --branch Python
+
 
 cd Proto/api
 sudo pip3 install -r requirements.txt
