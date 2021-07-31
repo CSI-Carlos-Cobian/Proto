@@ -18,12 +18,13 @@ path = os.path.dirname(os.path.abspath(__file__))
 filesList = []
 for file in os.listdir(f"{path}"):
     if (file.endswith(".dat")):
-        filesList.append(f"{path}\{file}")
+        filesList.append(os.path.join(path,file))
+        # filesList.append(f"{path}\\{file}")
 
 questions = [
             inquirer.Checkbox(
                 'file',
-                message="Which file(s)?",
+                message="Which file(s)? (space-bar)",
                 choices=filesList,
             ),
             ]

@@ -1,6 +1,11 @@
 from __future__ import unicode_literals
 from django.db import models
 
+# I'm thinking that properly sorting these models 
+# and changing string values of object names to object references 
+# may provide scalable benefits to the synthesys cycle. 
+# Sugested attempt upon next cycle. 
+
 class Type(models.Model):
     idtype = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=45)
