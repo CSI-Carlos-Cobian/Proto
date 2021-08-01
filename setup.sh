@@ -15,8 +15,5 @@ sudo mysql -e "CREATE SCHEMA protoapi_db"
 cd api
 sudo pip3 install -r requirements.txt
 sudo python3 manage.py migrate
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@adhoc.com', '4dHocHomeworkPr0t0')" | sudo python3 manage.py shell 
+# echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@adhoc.com', '4dHocHomeworkPr0t0')" | sudo python3 manage.py shell 
 cd ..
-#TODO: Attempt installation of DRF Aggregates Renderer https://pypi.org/project/drf-aggregates/
-# Do they integrate with filters?
-# pip install drf-aggregates
