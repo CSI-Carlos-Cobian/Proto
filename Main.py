@@ -61,18 +61,18 @@ for answer in answers['file']:
                             file.read(8),
                             byteorder='big', 
                             signed=False)
-            ammount     = None
+            amount      = None
             if(Type.hasField(typeByte)):
-                ammount = struct.unpack('!d', file.read(8))[0]
+                amount = struct.unpack('!d', file.read(8))[0]
 
             r = Record  (   None,
                             type_idtype = Type(idtype=type, name=Type.getTypeName(typeByte)),
                             timestamp   = timestamp,
                             user_iduser = User(iduser=user_iduser),
-                            ammount     = ammount
+                            amount      = amount
                         ) 
             # recordList.append(r) 
-            print(f"Record {i}/{records}: {r.type_idtype.name:14} | {r.timestamp:12} | {r.user_iduser.iduser:22} | {r.ammount}")
+            print(f"Record {i}/{records}: {r.type_idtype.name:14} | {r.timestamp:12} | {r.user_iduser.iduser:22} | {r.amount}")
 
             r.user_iduser.save()
             r.type_idtype.save()#TODO: Implement default inserts on django migration.
@@ -94,20 +94,20 @@ for answer in answers['file']:
 
 
 print(f"Finished execution.")
-print(f"total credit amount={Record.objects.filter(type_idtype=1).aggregate(Sum('ammount'))['ammount__sum']}")
-print(f"total debit amount={Record.objects.filter(type_idtype=0).aggregate(Sum('ammount'))['ammount__sum']}")
+print(f"total credit amount={Record.objects.filter(type_idtype=1).aggregate(Sum('amount'))['amount__sum']}")
+print(f"total debit amount={Record.objects.filter(type_idtype=0).aggregate(Sum('amount'))['amount__sum']}")
 print(f"autopays started={Record.objects.filter(type_idtype=2).count()}")
 print(f"autopays ended={Record.objects.filter(type_idtype=3).count()}")
 
 thisUser = 2456938384156277127
 debit = Record.objects.filter(  user_iduser=thisUser, 
                                 type_idtype=0
-                                ).aggregate(Sum('ammount'))['ammount__sum']
+                                ).aggregate(Sum('amount'))['amount__sum']
 if debit is None: debit = 0.0
 
 credit = Record.objects.filter( user_iduser=thisUser, 
                                 type_idtype=1
-                                ).aggregate(Sum('ammount'))['ammount__sum']
+                                ).aggregate(Sum('amount'))['amount__sum']
 if credit is None: credit = 0.0
 
 print(f"balance for user {thisUser}={float(credit)-float(debit)}")
@@ -130,7 +130,7 @@ print(f"balance for user {thisUser}={float(credit)-float(debit)}")
 #     r:Record = Record(
 #     idrecord = (d['attributes']['idrecord']),
 #     timestamp = (d['attributes']['timestamp']),
-#     ammount = (d['attributes']['ammount']),
+#     amount = (d['attributes']['amount']),
 #     user_iduser = User(**d['attributes']['userIduser']),
 #     type_idtype = Type(**d['attributes']['typeIdtype']))
 #     print(f": {str(r.user_iduser.iduser)}")

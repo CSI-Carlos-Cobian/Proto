@@ -44,7 +44,7 @@ class Record(models.Model):
     type_idtype = models.ForeignKey(Type, models.DO_NOTHING, db_column='type_idtype')
     timestamp = models.PositiveBigIntegerField()
     user_iduser = models.ForeignKey(User, models.DO_NOTHING, db_column='user_iduser')
-    ammount = models.FloatField(blank=True, null=True)
+    amount = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False

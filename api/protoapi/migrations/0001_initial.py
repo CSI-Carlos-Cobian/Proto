@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 ('user_iduser', models.ForeignKey('User', models.DO_NOTHING, db_column='user_iduser')),
                 ('idrecord', models.AutoField(primary_key=True, serialize=True)),
                 ('timestamp', models.PositiveBigIntegerField()),
-                ('ammount', models.FloatField(blank=True, null=True)),
+                ('amount', models.FloatField(blank=True, null=True)),
             ],
             options={
                 'db_table': 'record',

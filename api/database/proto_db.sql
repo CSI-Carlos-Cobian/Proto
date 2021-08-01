@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `protoapi_db`.`Record` (
   `type_idtype` INT NOT NULL,
   `timestamp` BIGINT(20) UNSIGNED NOT NULL,
   `user_iduser` BIGINT(20) UNSIGNED NOT NULL,
-  `ammount` DOUBLE NULL DEFAULT NULL,
+  `amount` DOUBLE NULL DEFAULT NULL,
   PRIMARY KEY (`idrecord`),
   INDEX `fk_record_type_idx` (`type_idtype` ASC),
   INDEX `fk_record_user1_idx` (`user_iduser` ASC),
@@ -62,8 +62,6 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
 
 -- -----------------------------------------------------
 -- Default GODMODE #TODO User manually inserted.
