@@ -67,30 +67,12 @@ if sys.argv[-1] == "publish":
     print("  git push --tags")
     sys.exit()
 
-    # version=get_version(""),
-    # author="",
-    # name="",
-    # url="",
-    # license="",
-    # description="",
-    # long_description=read(""),
-    # author_email="",
-    # packages=get_packages(""),
-    # package_data=get_package_data(""),
 setup(
     classifiers=[
-        "Environment :: Back End Web Environment",
+        "Environment :: Back-End Web Environment",
         "Framework :: Django",
         "Intended Audience :: AdHoc",
         "Operating System :: OS Independent",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Topic :: Internet :: WWW/HTTP",
-        "Topic :: Software Development :: Libraries :: Application Frameworks",
     ],
     install_requires=[
         "inflection>=0.3.0",

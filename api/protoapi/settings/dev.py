@@ -10,27 +10,9 @@ LOGIN_URL = 'rest_framework:login'
 LOGOUT_URL = 'rest_framework:logout'
 
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = (
-#     "https://localhost:8000",
-#     "https://127.0.0.1:8000",
-# )
 
 ALLOWED_HOSTS = [   "localhost",
                     "127.0.0.1", ]
-
-
-# hiddenimports=[ "django.contrib.admin.apps", 
-#                 "django.contrib.auth.apps", 
-#                 "django.contrib.contenttypes.apps", 
-#                 "django.contrib.sessions.apps", 
-#                 "django.contrib.messages.apps", 
-#                 "django.contrib.staticfiles.apps", 
-#                 "django.contrib.messages.middleware", 
-#                 "django.contrib.sessions.middleware", 
-#                 "django.contrib.sessions.serializers", 
-#                 "django.template.loaders", 
-#                 "django.contrib.auth.context_processors", 
-#                 "django.contrib.messages.context_processors"]
 
 DATABASE_ENGINE = "mysql"
 

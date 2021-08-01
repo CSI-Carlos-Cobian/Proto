@@ -26,15 +26,14 @@ urlpatterns = [
     path('protoapi/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('protoapi/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
     path('protoapi/token/verify', TokenVerifyView.as_view(), name='token_verify'),
-    url(r'^protoapi/admin/', admin.site.urls),
-
+    # url(r'^protoapi/admin/', admin.site.urls),
 
     path(
         "openapi",
         get_schema_view(
             title="Proto API",
             description="API to parse bytes into relational models",
-            version="0.1.0",
+            version="1.0.0",
             generator_class=SchemaGenerator,
         ),
         name="openapi-schema",

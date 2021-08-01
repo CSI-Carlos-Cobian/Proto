@@ -114,16 +114,23 @@ print(f"balance for user {thisUser}={float(credit)-float(debit)}")
 
 
 # # JSON REST Endpoint 
-# import argparse
 # import urllib.request
 # import json
+
 # headers = { 'accept' : 'application/vnd.api+json',
 #             'Content-Type' : 'application/vnd.api+json' }#TODO: Include AuthBearer header when IsAuthenticated is active.
 # host    = "http://localhost:8000"
 # url = f"{host}/protoapi/record?filter[timestamp]={r.timestamp}&filter[user_iduser]={r.user_iduser.iduser}"
 # req = urllib.request.Request(url, headers=headers)
 # data = json.loads(urllib.request.urlopen(req).read())
+
 # for d in data['data']: 
-#     r:Record = Record(**d['attributes'])
-#     r.user_iduser = User(**d['attributes']['attributes'])
-#     print(f": {str()}")
+#     print(d)
+#     # r:Record = Record(**d['attributes']) #Nested Deserialization fails
+#     r:Record = Record(
+#     idrecord = (d['attributes']['idrecord']),
+#     timestamp = (d['attributes']['timestamp']),
+#     ammount = (d['attributes']['ammount']),
+#     user_iduser = User(**d['attributes']['userIduser']),
+#     type_idtype = Type(**d['attributes']['typeIdtype']))
+#     print(f": {str(r.user_iduser.iduser)}")
